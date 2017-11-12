@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span>Fluxo Atendimentos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-fluxo-atendimento" [routerLink]="['/', { outlets: { popup: ['fluxo-atendimento-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Fluxo Atendimento
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="fluxoAtendimentos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nomePaciente"><span>Nome Paciente</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="razaoVisita"><span>Razao Visita</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="horaChegada"><span>Hora Chegada</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="agendamentoId"><span>Agendamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ubsId"><span>Ubs</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let fluxoAtendimento of fluxoAtendimentos ;trackBy: trackId">
+                <td><a [routerLink]="['../fluxo-atendimento', fluxoAtendimento.id ]">{{fluxoAtendimento.id}}</a></td>
+                <td>{{fluxoAtendimento.nomePaciente}}</td>
+                <td>{{fluxoAtendimento.razaoVisita}}</td>
+                <td>{{fluxoAtendimento.horaChegada}}</td>
+                <td>
+                    <div *ngIf="fluxoAtendimento.agendamentoId">
+                        <a [routerLink]="['../agendamento', fluxoAtendimento.agendamentoId  ]" >{{fluxoAtendimento.agendamentoId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="fluxoAtendimento.ubsId">
+                        <a [routerLink]="['../ubs', fluxoAtendimento.ubsId  ]" >{{fluxoAtendimento.ubsId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../fluxo-atendimento', fluxoAtendimento.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'fluxo-atendimento/'+ fluxoAtendimento.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'fluxo-atendimento/'+ fluxoAtendimento.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="fluxoAtendimentos && fluxoAtendimentos.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

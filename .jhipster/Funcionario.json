@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "endereco",
+            "otherEntityName": "endereco",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "funcionario"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "cargo",
+            "otherEntityName": "cargo",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "funcionario"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "departamento",
+            "otherEntityName": "departamento",
+            "otherEntityRelationshipName": "funcionario"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "expedientes",
+            "otherEntityName": "expediente",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "consulta",
+            "otherEntityName": "fluxoAtendimento",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "funcionario"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cpf",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20171112143017",
+    "entityTableName": "funcionario",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

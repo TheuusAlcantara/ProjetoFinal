@@ -1,0 +1,45 @@
+
+<div *ngIf="uBS">
+    <h2><span>UBS</span> {{uBS.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nome</span></dt>
+        <dd>
+            <span>{{uBS.nome}}</span>
+        </dd>
+        <dt><span>Hora Abertura</span></dt>
+        <dd>
+            <span>{{uBS.horaAbertura}}</span>
+        </dd>
+        <dt><span>Hora Fechamento</span></dt>
+        <dd>
+            <span>{{uBS.horaFechamento}}</span>
+        </dd>
+        <dt><span>Endereco</span></dt>
+        <dd>
+            <div *ngIf="uBS.enderecoId">
+                <a [routerLink]="['/endereco', uBS.enderecoId]">{{uBS.enderecoId}}</a>
+            </div>
+        </dd>
+        <dt><span>Departamentos</span></dt>
+        <dd>
+            <div *ngIf="uBS.departamentosId">
+                <a [routerLink]="['/departamento', uBS.departamentosId]">{{uBS.departamentosId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ubs/'+ uBS.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

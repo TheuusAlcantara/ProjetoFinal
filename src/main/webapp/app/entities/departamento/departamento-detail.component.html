@@ -1,0 +1,41 @@
+
+<div *ngIf="departamento">
+    <h2><span>Departamento</span> {{departamento.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nome</span></dt>
+        <dd>
+            <span>{{departamento.nome}}</span>
+        </dd>
+        <dt><span>Descricao</span></dt>
+        <dd>
+            <span>{{departamento.descricao}}</span>
+        </dd>
+        <dt><span>Servicos</span></dt>
+        <dd>
+            <div *ngIf="departamento.servicosId">
+                <a [routerLink]="['/servico', departamento.servicosId]">{{departamento.servicosId}}</a>
+            </div>
+        </dd>
+        <dt><span>Funcionario</span></dt>
+        <dd>
+            <div *ngIf="departamento.funcionarioId">
+                <a [routerLink]="['/funcionario', departamento.funcionarioId]">{{departamento.funcionarioId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'departamento/'+ departamento.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

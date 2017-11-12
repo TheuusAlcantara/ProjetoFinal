@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity UBS.
+    -->
+    <changeSet id="20171112143015-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="endereco_id"
+                                 baseTableName="ubs"
+                                 constraintName="fk_ubs_endereco_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="endereco"/>
+
+        <addForeignKeyConstraint baseColumnNames="departamentos_id"
+                                 baseTableName="ubs"
+                                 constraintName="fk_ubs_departamentos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="departamento"/>
+
+    </changeSet>
+</databaseChangeLog>

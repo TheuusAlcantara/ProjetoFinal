@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "endereco",
+            "otherEntityName": "endereco",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "uBS"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "departamentos",
+            "otherEntityName": "departamento",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "horaAbertura",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "horaFechamento",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171112143015",
+    "entityTableName": "ubs",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

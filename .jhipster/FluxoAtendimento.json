@@ -1,0 +1,64 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "agendamento",
+            "otherEntityName": "agendamento",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "fluxoAtendimento"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "ubs",
+            "otherEntityName": "uBS",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "fluxoAtendimento"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "fluxoAtendimento",
+            "otherEntityName": "atividade",
+            "otherEntityRelationshipName": "fluxoAtendimento"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "consulta",
+            "relationshipName": "funcionario",
+            "otherEntityName": "funcionario",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nomePaciente",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "razaoVisita",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "horaChegada",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20171112143021",
+    "entityTableName": "fluxo_atendimento",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

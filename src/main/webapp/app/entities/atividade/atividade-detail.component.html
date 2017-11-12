@@ -1,0 +1,39 @@
+
+<div *ngIf="atividade">
+    <h2><span>Atividade</span> {{atividade.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Descricao</span></dt>
+        <dd>
+            <span>{{atividade.descricao}}</span>
+        </dd>
+        <dt><span>Hora Inicio</span></dt>
+        <dd>
+            <span>{{atividade.horaInicio}}</span>
+        </dd>
+        <dt><span>Hora Fim</span></dt>
+        <dd>
+            <span>{{atividade.horaFim}}</span>
+        </dd>
+        <dt><span>Fluxo Atendimento</span></dt>
+        <dd>
+            <div *ngIf="atividade.fluxoAtendimentoId">
+                <a [routerLink]="['/fluxo-atendimento', atividade.fluxoAtendimentoId]">{{atividade.fluxoAtendimentoId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'atividade/'+ atividade.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

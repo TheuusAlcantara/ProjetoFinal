@@ -1,0 +1,78 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFluxoAtendimentoLabel">Create or edit a Fluxo Atendimento</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!fluxoAtendimento.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="fluxoAtendimento.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nomePaciente">Nome Paciente</label>
+            <input type="text" class="form-control" name="nomePaciente" id="field_nomePaciente"
+                [(ngModel)]="fluxoAtendimento.nomePaciente" required />
+            <div [hidden]="!(editForm.controls.nomePaciente?.dirty && editForm.controls.nomePaciente?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nomePaciente?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_razaoVisita">Razao Visita</label>
+            <input type="text" class="form-control" name="razaoVisita" id="field_razaoVisita"
+                [(ngModel)]="fluxoAtendimento.razaoVisita" required />
+            <div [hidden]="!(editForm.controls.razaoVisita?.dirty && editForm.controls.razaoVisita?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.razaoVisita?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_horaChegada">Hora Chegada</label>
+            <input type="text" class="form-control" name="horaChegada" id="field_horaChegada"
+                [(ngModel)]="fluxoAtendimento.horaChegada" required />
+            <div [hidden]="!(editForm.controls.horaChegada?.dirty && editForm.controls.horaChegada?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.horaChegada?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_agendamento">Agendamento</label>
+            <select class="form-control" id="field_agendamento" name="agendamento" [(ngModel)]="fluxoAtendimento.agendamentoId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="agendamentoOption.id" *ngFor="let agendamentoOption of agendamentos; trackBy: trackAgendamentoById">{{agendamentoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ubs">Ubs</label>
+            <select class="form-control" id="field_ubs" name="ubs" [(ngModel)]="fluxoAtendimento.ubsId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="uBSOption.id" *ngFor="let uBSOption of ubs; trackBy: trackUBSById">{{uBSOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_funcionario">Funcionario</label>
+            <select class="form-control" id="field_funcionario" multiple name="funcionario" [(ngModel)]="fluxoAtendimento.funcionarios">
+                <option [ngValue]="getSelected(fluxoAtendimento.funcionarios, funcionarioOption)" *ngFor="let funcionarioOption of funcionarios; trackBy: trackFuncionarioById">{{funcionarioOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

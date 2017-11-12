@@ -5,6 +5,23 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143012_added_entity_Cidade.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143013_added_entity_Endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143014_added_entity_Departamento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143015_added_entity_UBS.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143016_added_entity_Servico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143017_added_entity_Funcionario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143018_added_entity_Expediente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143019_added_entity_Cargo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143020_added_entity_Agendamento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143021_added_entity_FluxoAtendimento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143022_added_entity_Atividade.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20171112143013_added_entity_constraints_Endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143014_added_entity_constraints_Departamento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143015_added_entity_constraints_UBS.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143017_added_entity_constraints_Funcionario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143021_added_entity_constraints_FluxoAtendimento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171112143022_added_entity_constraints_Atividade.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

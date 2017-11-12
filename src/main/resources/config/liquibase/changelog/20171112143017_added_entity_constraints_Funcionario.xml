@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Funcionario.
+    -->
+    <changeSet id="20171112143017-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="endereco_id"
+                                 baseTableName="funcionario"
+                                 constraintName="fk_funcionario_endereco_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="endereco"/>
+
+        <addForeignKeyConstraint baseColumnNames="cargo_id"
+                                 baseTableName="funcionario"
+                                 constraintName="fk_funcionario_cargo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cargo"/>
+
+        <addForeignKeyConstraint baseColumnNames="expedientes_id"
+                                 baseTableName="funcionario"
+                                 constraintName="fk_funcionario_expedientes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="expediente"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity FluxoAtendimento.
+    -->
+    <changeSet id="20171112143021-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="agendamento_id"
+                                 baseTableName="fluxo_atendimento"
+                                 constraintName="fk_fluxo_atendimento_agendamento_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agendamento"/>
+
+        <addForeignKeyConstraint baseColumnNames="ubs_id"
+                                 baseTableName="fluxo_atendimento"
+                                 constraintName="fk_fluxo_atendimento_ubs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ubs"/>
+
+        <addForeignKeyConstraint baseColumnNames="fluxo_atendimentos_id"
+                                 baseTableName="fluxo_atendimento_funcionario"
+                                 constraintName="fk_fluxo_atendimento_funcionario_fluxo_atendimentos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fluxo_atendimento"/>
+        <addForeignKeyConstraint baseColumnNames="funcionarios_id"
+                                 baseTableName="fluxo_atendimento_funcionario"
+                                 constraintName="fk_fluxo_atendimento_funcionario_funcionarios_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="funcionario"/>
+        
+    </changeSet>
+</databaseChangeLog>

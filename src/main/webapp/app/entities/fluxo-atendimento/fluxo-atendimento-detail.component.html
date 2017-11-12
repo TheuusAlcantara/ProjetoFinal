@@ -1,0 +1,51 @@
+
+<div *ngIf="fluxoAtendimento">
+    <h2><span>Fluxo Atendimento</span> {{fluxoAtendimento.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nome Paciente</span></dt>
+        <dd>
+            <span>{{fluxoAtendimento.nomePaciente}}</span>
+        </dd>
+        <dt><span>Razao Visita</span></dt>
+        <dd>
+            <span>{{fluxoAtendimento.razaoVisita}}</span>
+        </dd>
+        <dt><span>Hora Chegada</span></dt>
+        <dd>
+            <span>{{fluxoAtendimento.horaChegada}}</span>
+        </dd>
+        <dt><span>Agendamento</span></dt>
+        <dd>
+            <div *ngIf="fluxoAtendimento.agendamentoId">
+                <a [routerLink]="['/agendamento', fluxoAtendimento.agendamentoId]">{{fluxoAtendimento.agendamentoId}}</a>
+            </div>
+        </dd>
+        <dt><span>Ubs</span></dt>
+        <dd>
+            <div *ngIf="fluxoAtendimento.ubsId">
+                <a [routerLink]="['/ubs', fluxoAtendimento.ubsId]">{{fluxoAtendimento.ubsId}}</a>
+            </div>
+        </dd>
+        <dt><span>Funcionario</span></dt>
+        <dd>
+            <span *ngFor="let funcionario of fluxoAtendimento.funcionarios; let last = last">
+                <a [routerLink]="['/funcionario', funcionario?.id ]">{{funcionario.name}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'fluxo-atendimento/'+ fluxoAtendimento.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
